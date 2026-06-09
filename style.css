@@ -1,0 +1,99 @@
+/* 1. Variables globales pour modifier tes couleurs en un seul endroit */
+:root {
+    --bg-main: #15151e;       /* Noir/Gris très sombre F1 */
+    --bg-card: #1f1f27;       /* Gris des blocs de course */
+    --f1-red: #e10600;        /* Le rouge officiel F1 */
+    --text-light: #ffffff;    /* Texte principal */
+    --text-muted: #949498;    /* Texte secondaire (écuries, points) */
+}
+
+/* 2. Style général de la page */
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-light);
+    margin: 0;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Titre principal du site */
+h1 {
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 1px;
+    border-bottom: 4px solid var(--f1-red);
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+/* 3. Conteneur principal qui gère la disposition des blocs de course */
+#conteneur-courses {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* 4. Style d'un bloc de Grand Prix (une carte) */
+#conteneur-courses div {
+    background-color: var(--bg-card);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border-top: 4px solid var(--f1-red);
+    transition: transform 0.2s ease;
+}
+
+/* Petit effet au survol de la souris */
+#conteneur-courses div:hover {
+    transform: translateY(-5px);
+}
+
+/* Titre de chaque Grand Prix */
+h2 {
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--text-light);
+    border-bottom: 1px solid #38383f;
+    padding-bottom: 10px;
+}
+
+/* 5. Style des listes de pilotes */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5px;
+    border-bottom: 1px solid #2b2b35;
+    font-size: 0.95rem;
+}
+
+/* On retire la bordure pour le dernier pilote de la liste */
+li:last-child {
+    border-bottom: none;
+}
+
+/* Style pour mettre en valeur les 3 premiers (Podium) */
+li:nth-child(1) { color: #ffd700; font-weight: bold; } /* Or */
+li:nth-child(2) { color: #c0c0c0; font-weight: bold; } /* Argent */
+li:nth-child(3) { color: #cd7f32; font-weight: bold; } /* Bronze */
+
+/* Style pour les textes de chargement ou d'erreur */
+.loading {
+    text-align: center;
+    color: var(--text-muted);
+    font-style: italic;
+    grid-column: 1 / -1;
+}
